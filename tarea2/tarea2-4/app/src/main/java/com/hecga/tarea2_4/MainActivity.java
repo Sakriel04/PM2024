@@ -17,15 +17,37 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+
+        });
         et1=findViewById(R.id.et1);
         et2=findViewById(R.id.et2);
+
+    }
+    public void botonClick(View v) {
+        autenticar2(v);
+        autenticar(v);
     }
     public void autenticar(View v) {
-        String clave = et2.getText().toString();
-        if (clave.length() == 0) {
-            Toast notificacion = Toast.makeText(this, "La clave no puede quedar vacía", Toast.LENGTH_LONG);
+        String clave=et2.getText().toString();
+        if (clave.length()==0) {
+            Toast notificacion= Toast.makeText(this,"La clave no puede quedar vacía",
+                    Toast.LENGTH_LONG);
             notificacion.show();
         }
     }
+    public void autenticar2(View v) {
+        String clave=et1.getText().toString();
+        if (clave.length()==0) {
+            Toast notificacion= Toast.makeText(this,"El nombre no puede quedar vacio",
+                    Toast.LENGTH_LONG);
+            notificacion.show();
+        }
+    }
+
 }

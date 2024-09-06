@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">gps2</string>
+    <string name="google_maps_key"
+        templateMergeStrategy="preserve"
+        translatable="false">
+        AIzaSyCNn00wpEdUue5DkwtBFy465Cjd4uuyvsg
+    </string>
+</resources>
